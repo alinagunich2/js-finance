@@ -1,0 +1,63 @@
+.buttons {
+padding: 10px 0 40px 0 !important;
+}
+.period{
+    padding-bottom: 40px;
+}
+.data{
+    padding:  0  !important;
+    line-height: 0;
+    border: 0px;
+    border-radius: 0px;
+    border-bottom:  1.5px solid #6c757d;
+    max-width: 38px;
+    cursor: pointer;
+    margin-top: 2px !important;
+    font-family: "Roboto500";
+font-size: 16px;
+line-height: 19px;
+letter-spacing: 0.4571428596973419px;
+}
+th{
+    font-family: "Roboto500";
+font-size: 16px;
+line-height: 19px;
+letter-spacing: 1.3333333730697632px;
+color: rgba(5, 44, 101, 1) !important;
+
+}
+tbody td:first-child{
+    color: black !important;
+    font-family: "Roboto500";
+font-size: 16px;
+line-height: 23px;
+}
+td{
+font-size: 16px;
+padding: 12px 0 !important;
+}
+
+.ernin{
+    color: rgba(25, 135, 84, 1) !important;
+}
+.comsu{
+    color: rgba(220, 53, 69, 1) !important;
+}
+.period-button{
+    font-family: "Roboto500";
+font-size: 16px;
+line-height: 19px;
+letter-spacing: 0.4571428596973419px;
+color: #6c757d;
+background: white;
+width: 100px;
+padding: 9px 0;
+text-align: center;
+border-radius: 4px;
+border: 1px solid #6c757d;
+margin-right: 20px;
+}
+.period-activ{
+    background: #6c757d;
+    color: white;
+}

@@ -1,0 +1,12 @@
+
+  .dropdown-menu{
+    width: 365px !important;
+    max-height: calc(43vh - 200px);
+    overflow: auto;
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+}
+.dropdown-menu::-webkit-scrollbar {
+    width: 0px;
+    height: 0;
+  }

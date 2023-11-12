@@ -1,0 +1,44 @@
+<div class="content-title" id="content-title">Главная</div>
+<div class="period  d-flex align-items-center mt-4 pb-2">
+    <button class="period-button period-activ period-button" id="today">Сегодня</button>
+    <button class="period-button period-button " id="week">Неделя</button>
+    <button class="period-button period-button" id="month">Месяц</button>
+    <button class="period-button period-button" id="year">Год</button>
+    <button class="period-button period-button" id="all">Все</button>
+    <button class="period-button period-button" id="interval">Интервал</button>
+    
+    <form action="" class="me-4">
+        <div class="form-group d-flex justify-content-center">
+            <label for="date" class="col-sm-1 col-form-label me-3 p-0">c</label>
+                <div class="input-group date" id="datepicker">
+                    <span class="input-group-append ">
+                            <input type="text" class="data form-control" placeholder="Дата" id="dateFrom">
+                    </span>
+                </div>
+        </div>
+    </form>
+    <form action="">
+        <div class="form-group d-flex">
+            <label for="date" class="col-sm-1 col-form-label me-4 p-0">по</label>
+                <div class="input-group date" id="datepicke">
+                    <span class="input-group-append ">
+                            <input type="text" class="data form-control " placeholder="Дата" id="dateTo">
+                    </span>
+                </div>
+        </div>
+    </form>
+  </div>
+<div class="row mt-5">
+    <div class="col-6 erning ">
+        <p class="text-center title-diagram">Доходы</p>
+        <div class="diagram text-center mx-auto" id="canv1">
+            
+        </div>
+    </div>
+    <div class="col-6 comsumpt">
+        <p class="text-center title-diagram">Расходы</p>
+        <div class="diagram mx-auto" id="canv2">
+            
+        </div>
+    </div>
+</div>
