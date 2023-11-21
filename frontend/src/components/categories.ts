@@ -9,7 +9,7 @@ export class Categories{
     private title =document.getElementById('content-title')
     private page:'ernings'|'comsuption';
     private categories:CategoriesResponseType[]|null;
-    private idDelite:any;
+    private idDelite:null|string;
 
     constructor(page:'ernings'|'comsuption'){
         this.page = page
@@ -75,7 +75,7 @@ export class Categories{
         
     }
 
-   private async delete(type:string,itm:number):Promise<void>{
+   private async delete(type:string,itm:string):Promise<void>{
         try{
 
             const result:LogoutResponse = await CustomHttp.request(configs.host+'/categories/'+type+'/'+itm, 'DELETE')
@@ -113,13 +113,15 @@ export class Categories{
         if(popapElement){
             popapElement.onclick = function () {
                 (document.getElementById('popap') as HTMLElement).style.display='none'
-    
-                if(that.page ==='ernings'){
-                    that.delete('income',that.idDelite)               
-                }else{
-                    that.delete('expense',that.idDelite)    
+                if(typeof that.idDelite==='string'){
+                    if(that.page ==='ernings'){
+                        that.delete('income',that.idDelite)               
+                    }else{
+                        that.delete('expense',that.idDelite)    
+                    }
+                    
                 }
-                
+               
             }
         }
         

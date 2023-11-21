@@ -3,6 +3,7 @@ import { UrlManager } from "../utills/utills";
 import configs from "../../config/configs"
 
 import {CategoriesResponseType} from "../types/categories-response.type"
+import {typeCategorListType} from "../types/categor-list.type"
 
 
 export class Creation {
@@ -11,9 +12,9 @@ export class Creation {
     private routeParams = UrlManager.getQueryParams();
 
     private categories:CategoriesResponseType[]|null;
-    private categor:any;
+    private categor:null|typeCategorListType;
 
-    private input:any= document.getElementsByTagName('input')
+    private input:HTMLCollectionOf<HTMLInputElement> = document.getElementsByTagName('input')
     private itmType:HTMLCollectionOf<Element>|null = document.getElementsByClassName('dropdown-item')
     private create:HTMLElement|null = document.getElementById('create')
     private id:string
@@ -91,11 +92,10 @@ export class Creation {
             console.log(e)
         }
     }
-   private showTitle(text:string, type:any ):void{
-        let input:any = this.input[0]
+   private showTitle(text:string, type:string ):void{
         (document.getElementById('content-title') as HTMLElement).innerText = text 
-        input.value = type 
-        input.setAttribute('disabled', 'disabled')
+        this.input[0].value = type 
+        this.input[0].setAttribute('disabled', 'disabled')
     }
    private cancel():void{
         (document.getElementById('cancel')as HTMLElement).onclick = function () {
@@ -104,7 +104,7 @@ export class Creation {
         }
     }
    private searchType():void{
-        let that:any =this
+        let that =this
 
         
         const result:HTMLElement|null = document.getElementById('dropdown-menu')
@@ -121,7 +121,10 @@ export class Creation {
       if(this.itmType){
         for(let i = 0; i<this.itmType.length;i++){
             (this.itmType[i] as HTMLElement).onclick = function () {
-                that.input[1].value = that.itmType[i].textContent
+                if(that.itmType){
+                    that.input[1].value = (that.itmType[i] as HTMLElement).textContent as string
+                }
+                
             }
         }
       }
@@ -129,7 +132,7 @@ export class Creation {
         
     }
    private validateForm():void{
-        let that =this
+        let that:Creation =this
 
         let y = false
         for(let i = 0;i<this.input.length-1;i++){
@@ -148,13 +151,13 @@ export class Creation {
         
 
     }
-   private async savingData(id:any,type:string,url:string,metod:string):Promise<void>{
+   private async savingData(id:number|null,type:string,url:string,metod:string):Promise<void>{
         try{
             const result = await CustomHttp.request(configs.host+url,metod,{
                 type: type,
                 amount: this.input[2].value,
                 date: this.input[3].value,
-                comment: this.input[4].value ===true?this.input[4].value:' ',
+                comment: this.input[4].value.length>0?this.input[4].value:' ',
                 category_id:  Number(id)
              })
 
@@ -176,7 +179,7 @@ export class Creation {
         let id = this.routeParams.id
 
         try{
-            const result:CategoriesResponseType = await CustomHttp.request(configs.host+'/operations/'+id, 'GET')
+            const result:typeCategorListType = await CustomHttp.request(configs.host+'/operations/'+id, 'GET')
                 
             if(result){
                
@@ -193,7 +196,7 @@ export class Creation {
         console.log(id)
     }
    
-   private saveCategor(type:string):any{     
+   private saveCategor(type:string):number|null{     
         let idcategor=null
         if(this.categories){
             for(let i = 0;i<this.categories.length;i++){

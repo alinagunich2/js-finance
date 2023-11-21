@@ -12,6 +12,7 @@ import {Auth} from "./services/auth"
 
 import {RouteType} from "./types/route.types"
 import {UserInfoType} from "./types/user-info.type"
+import { SortingInterval } from './utills/sorting';
 
 
 export class Router{
@@ -56,7 +57,7 @@ export class Router{
                 template:'template/main.html',
                 styles:'styles/main-ernings-comsumption.css',
                 load:()=>{
-                    new Sidebar('.tabs'),
+                    new Sidebar(),
                     new Main()
                 }
              },
@@ -67,7 +68,7 @@ export class Router{
                 styles:'styles/main-ernings-comsumption.css',
                 load:()=>{
                     new MainErnings(),
-                    new Sidebar('.tabs')
+                    new Sidebar()
                 }
              },
              {
@@ -77,7 +78,7 @@ export class Router{
                 styles:'styles/creation.css',
                 load:()=>{
                     new Creation('create-ern'),
-                    new Sidebar('.tabs')
+                    new Sidebar()
                 }
              },
              {
@@ -87,7 +88,7 @@ export class Router{
                 styles:'styles/creation.css',
                 load:()=>{
                     new Creation('create-com'),
-                    new Sidebar('.tabs')
+                    new Sidebar()
                 }
              },
              {
@@ -97,7 +98,7 @@ export class Router{
                 styles:'styles/creation.css',
                 load:()=>{
                     new Creation('edit-ernings'),
-                    new Sidebar('.tabs')
+                    new Sidebar()
                 }
              },
              {
@@ -107,7 +108,7 @@ export class Router{
                 styles:'styles/creation.css',
                 load:()=>{
                     new Creation('edit-comsumption'),
-                    new Sidebar('.tabs')
+                    new Sidebar()
                 }
              },
              {
@@ -117,7 +118,7 @@ export class Router{
                 styles:'styles/ernings-comsumption.css',
                 load:()=>{
                     new Categories('ernings'),
-                    new Sidebar('.tabs')
+                    new Sidebar()
                 }
              },
              {
@@ -127,7 +128,7 @@ export class Router{
                 styles:'styles/ernings-comsumption.css',
                 load:()=>{
                     new Categories('comsuption'),
-                    new Sidebar('.tabs')
+                    new Sidebar()
                 }
              },
              {
@@ -137,7 +138,7 @@ export class Router{
                 styles:'',
                 load:()=>{
                     new CategoriesCreate('ernings'),
-                    new Sidebar('.tabs')
+                    new Sidebar()
                 }
              },
              {
@@ -147,7 +148,7 @@ export class Router{
                 styles:'',
                 load:()=>{
                     new CategoriesCreate('comsuption'),
-                    new Sidebar('.tabs')
+                    new Sidebar()
                 }
              },
              {
@@ -157,7 +158,7 @@ export class Router{
                 styles:'',
                 load:()=>{
                     new CategoriesEdit('ernings'),
-                    new Sidebar('.tabs')
+                    new Sidebar()
                 }
              },
              {
@@ -167,7 +168,7 @@ export class Router{
                 styles:'',
                 load:()=>{
                     new CategoriesEdit('comsuption'),
-                    new Sidebar('.tabs')
+                    new Sidebar()
                 }
              },
 

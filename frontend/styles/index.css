@@ -29,7 +29,7 @@ html,body{
 }
     
 
-.nav-saidbar-item,
+
 .catiger-item,
 .nav-saidbar-catiger{
     max-width: 188px;
@@ -137,38 +137,38 @@ margin-bottom: 20px;
   .tabs__pane{
     display: none;
   }
-  .tabs__pane_show {
+  .tabs__pane-show {
     display: block;
-    opacity: 0;
     animation: ani 1s forwards;
   }
 
-  .tabs__btn {
+  .main-menu {
     
-    cursor: pointer;
+    cursor: pointer !important;
   }
   
-  .tabs__btn_active {
+  
+  /* .activ-comsumotion {
     background-color: rgba(13, 110, 253, 1);
     color: white;
-    border-radius: 5px;
+    border-radius: 5px !important;
     cursor: default;
     animation: ani 1s forwards;
-  }
+  } */
   @keyframes ani {
     0% {opacity: 0;}
     100% {opacity: 1;}
   }
-  .activ{
+  .activ-comsumotion{
     background-color: rgba(13, 110, 253, 1);
     color: white;
     border-radius: 5px;
 }
-.activ path {
+.activ-comsumotion path {
     fill: antiquewhite ;
 }
 
-.tabs__btn_active path {
+.activ-comsumotion path {
     fill: antiquewhite;
 }
 .btn-toggle::before{
@@ -180,10 +180,9 @@ margin-bottom: 20px;
 .tabs__btn_active.btn-toggle{
     border-radius: 5px 5px 0 0;
 }
-.tabs__btn_active.btn-toggle::before {
+.activ-comsumotion.btn-toggle::before {
     content: url(../img/ernings-comsumption/arrow-white.svg) !important;
 }
-
 /* .activ-catiger{
     background-color: rgba(13, 110, 253, 1);
     color: white;
@@ -205,9 +204,34 @@ margin-bottom: 20px;
 .activ-comsumotion{       /* активировать расходы но при этом класс noactive-comsumotion отсается всегда в html */
     background-color: rgba(13, 110, 253, 1);
     color: white;
+    border-radius: 5px ;
+    cursor: default;
+    animation: ani 1s forwards;
 } 
 
+.main-menu a, .link-category{
+    color: rgba(5, 44, 101, 1);
+    text-decoration: none;
+}
+.link-men{
+    display: block;
+    width: 100%;
+    padding: 12px 11px 12px 16px;
+}
+.activ-comsumotion a{
+    color: white;
+}
+.active-comsumotion{
+    background-color: rgba(13, 110, 253, 1);
+    color: white;
+    animation: ani 1s forwards;
+}
 .activ-ernings{
     background-color: rgba(13, 110, 253, 1);
     color: white;
+    animation: ani 1s forwards;
+}
+.category{
+    border-radius: 5px 5px 0 0 !important;
+    animation: ani 1s forwards;
 }

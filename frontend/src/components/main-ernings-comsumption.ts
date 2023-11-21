@@ -6,19 +6,17 @@ import configs from "../../config/configs"
 import {OperationsResponseType} from "../types/operations-response.type"
 
 
-export class MainErnings{
-    private idDelite:any;
+import { SortingInterval } from "../utills/sorting";
+
+export class MainErnings extends SortingInterval{
+    
+    private sortNowInterval:string = ''
+
+    private idDelite:string|null;
 
     private data:OperationsResponseType[]|null;
-    private Month:number;
-    private dateFromTo:string;
-    private dateTo:string;
-    private nowYear:string;
-    private nowMonth:string;
-    private nowDay:string;
-    private interval:any
-
      constructor(){
+        super()
         this.idDelite = null
 
         let buttom = document.querySelectorAll('.period-button')
@@ -35,21 +33,13 @@ export class MainErnings{
         })
 
         this.data =null
-        this.interval = null
-
-        this.Month = new Date().getMonth()+1
-
-        this.dateFromTo = new Date().getFullYear().toString()+'-'+this.Month.toString()+'-'+new Date().getDate().toString()+'&dateTo='+new Date().getFullYear().toString()+'-'+this.Month.toString()+'-'+new Date().getDate().toString()
-        this.dateTo='&dateTo='+new Date().getFullYear().toString()+'-'+this.Month.toString()+'-'+new Date().getDate().toString()
-        this.nowYear = new Date().getFullYear().toString()
-        this.nowMonth = this.Month.toString()
-        this.nowDay = new Date().getDate().toString()
-        this.int()
-        this.sorting()
+        this.int(this.dateFromTo)
+        this.sorting(MainErnings)
         this.changPage()
     }
   
-  private  async int(data = this.dateFromTo):Promise<void>{
+  public  async int(data = this.dateFromTo):Promise<void>{
+        this.sortNowInterval = data
         try{
 
             const result:OperationsResponseType[] = await CustomHttp.request(configs.host+'/operations?period=interval&dateFrom='+data)
@@ -101,76 +91,14 @@ export class MainErnings{
     }
        
     }
-   private sorting():void{
-        const that = this
-        let data = new Date();
 
-        this.int(this.dateFromTo)
-
-        let todayElement:HTMLElement|null=document.getElementById('today')
-        if(todayElement){
-            todayElement.onclick = function () {
-                that.interval = that.dateFromTo
-                that.int(that.interval)
-            }
-        }
-
-        let weekElement:HTMLElement|null=document.getElementById('week')
-        if(weekElement){
-            weekElement.onclick = function () {
-                let startDate = new Date();
-                startDate.setDate(data.getDate() - 7);
-    
-                that.interval = startDate.getFullYear()+'-'+startDate.getMonth()+'-'+startDate.getDate()+that.dateTo
-                that.int(that.interval)
-            }
-        }
-
-        let monthElement:HTMLElement|null=document.getElementById('month')
-        if(monthElement){
-            monthElement.onclick = function () {
-                let startDate = new Date();
-                startDate.setMonth(data.getMonth() - 1);
-    
-                that.interval  = startDate.getFullYear()+'-'+startDate.getMonth()+'-'+startDate.getDate()+that.dateTo
-                that.int(that.interval)
-            }
-        }
-
-        let yearElement:HTMLElement|null=document.getElementById('year')
-        if(yearElement){
-            yearElement.onclick = function () {
-                that.interval  = new Date().getFullYear()-1+'-'+that.nowMonth+'-'+that.nowDay+that.dateTo
-                that.int(that.interval)
-                
-            }
-        }
-        let allElement:HTMLElement|null=document.getElementById('all')
-        if(allElement){
-            allElement.onclick = function () {
-                that.interval = '1999-01-01&dateTo=2300-09-13'
-                that.int(that.interval)
-                
-            }
-        }
-        let intervalElement:HTMLElement|null=document.getElementById('interval')
-        if(intervalElement){
-            intervalElement.onclick = function () {
-                let dateFrom = (document.getElementById('dateFrom') as HTMLInputElement).value
-                let dateTo = (document.getElementById('dateTo')as HTMLInputElement).value
-                that.interval = dateFrom+'&dateTo='+dateTo
-                that.int(that.interval)
-            }
-        }
-    }
   private async delete(itm:string):Promise<void>{
         try{
 
             const result:OperationsResponseType = await CustomHttp.request(configs.host+'/operations/'+itm, 'DELETE')
                 
             if(result){
-                
-            this.int(this.interval)
+                this.int(this.sortNowInterval)
             new Balance().bal()
             }
         }catch(e){
@@ -178,7 +106,7 @@ export class MainErnings{
         }
     }
    private deleteItm():void{
-        let that = this
+        let that:MainErnings = this
      
         var deleteElms =  document.getElementsByClassName('delete');
         for(var i=0;i<deleteElms.length;i++){
@@ -195,13 +123,16 @@ export class MainErnings{
         Popap.popapText('Вы действительно хотите удалить операцию?', 'Да, удалить', 'Не удалять')
         Popap.popapHidden()
 
-        let that = this
+        let that:MainErnings = this
 
         let popapElement:HTMLElement|null = document.getElementById('popap-btn-f')
         if(popapElement){
             popapElement.onclick = function () {
                 (document.getElementById('popap') as HTMLElement).style.display='none'
-                that.delete(that.idDelite)
+                if(typeof that.idDelite==='string'){
+                    that.delete(that.idDelite)
+                }
+                
             }
         }
     }

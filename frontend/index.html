@@ -17,7 +17,9 @@
           <img src="img/logo.svg" alt="logo" width="98" height="40">
         </a>
         <ul class="nav-saidbar list-unstyled mb-auto tabs" id="tabs">
-          <li class="nav-saidbar-item d-flex tabs__btn " id="main">
+         
+          <li class="nav-saidbar-item d-flex tabs__btn main-menu activ-comsumotion" id="main">
+            <a href="#/main" class="d-flex link-men">
             <div class="icon-main me-2">
               <svg width="15" height="14" viewBox="0 0 15 14" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <path fill-rule="evenodd" clip-rule="evenodd" d="M1.5 12.3964V5.89641H2.5V12.3964C2.5 12.6726 2.72386 12.8964 3 12.8964H12C12.2761 12.8964 12.5 12.6726 12.5 12.3964V5.89641H13.5V12.3964C13.5 13.2248 12.8284 13.8964 12 13.8964H3C2.17157 13.8964 1.5 13.2248 1.5 12.3964Z" fill="#052C65"/>
@@ -27,8 +29,11 @@
             </div>
             <div class="">Главная</div>
             <div class="tabs__pane"></div>
+          </a>
           </li>
-          <li class="nav-saidbar-item d-flex tabs__btn" id="main-sek">
+       
+          <li class="nav-saidbar-item tabs__btn main-menu" id="main-sek">
+            <a href="#/main-ernings-comsumption" class="d-flex link-men">
             <div class="icon-ern-com me-2">
               <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <path fill-rule="evenodd" clip-rule="evenodd" d="M11 15C13.2091 15 15 13.2091 15 11C15 8.79086 13.2091 7 11 7C8.79086 7 7 8.79086 7 11C7 13.2091 8.79086 15 11 15ZM16 11C16 13.7614 13.7614 16 11 16C8.23858 16 6 13.7614 6 11C6 8.23858 8.23858 6 11 6C13.7614 6 16 8.23858 16 11Z" fill="#052C65"/>
@@ -37,21 +42,34 @@
                 <path d="M9.9983 5.08325C9.99943 5.05564 10 5.02789 10 5C10 3.89543 9.10457 3 8 3C6.89543 3 6 3.89543 6 5C6 5.6845 6.34387 6.28869 6.86829 6.64924C7.71486 5.84504 8.79591 5.28533 9.9983 5.08325Z" fill="#052C65"/>
                 </svg>                
             </div>
-            <div class="">Доходы & Расходы</div>
+            <div class="main-menu__text">Доходы & Расходы</div>
             <div class="tabs__pane"></div>
+          </a>
           </li>
           <li>
             <ul class=" nav nav-pills d-flex flex-column list-unstyled " >
-              <li class=" m-0 position-relative">
-                <div class="align-items-center   m-0  tabs__btn btn-toggle nav-saidbar-catiger " id="category">
+              <li class=" m-0 position-relative ">
+                <a href="#/ernings" class="link-category">
+                <div class="align-items-center   m-0  tabs__btn btn-toggle nav-saidbar-catiger main-menu category" >
+                  
                   Категории
+           
                 </div>
-                <div class="tabs__pane " >
+                <div class="tabs__pane " id="tabs__pane">
                   <ul class="catiger-items btn-toggle-nav list-unstyled fw-normal small">
-                    <li><div  class="d-block  text-decoration-none catiger-item  m-0 activ-comsumotion" id="ern">Доходы</div></li>
-                    <li><div class="d-block text-decoration-none catiger-item m-0 noactive-comsumotion " id="com">Расходы</div></li>
+                    <li>
+                      <a href="#/ernings" class="link-category">
+                      <div  class="d-block  text-decoration-none catiger-item  m-0 active-comsumotion main-menu-cati" id="ern">Доходы</div>
+                      </a>
+                    </li>
+                    <li>
+                      <a href="#/comsuption" class="link-category">
+                      <div class="d-block text-decoration-none catiger-item m-0 noactive-comsumotion main-menu-cati" id="com">Расходы</div>
+                    </a>
+                    </li>
                   </ul>
                 </div>
+                </a>
               </li>
             </ul>
           </li>
